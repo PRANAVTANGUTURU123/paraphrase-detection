@@ -1,0 +1,16 @@
+[
+  {
+    "dataset": "QQP (validation)",
+    "n": 40430,
+    "pred_positive_rate": 0.4889,
+    "accuracy": 0.7775,
+    "f1": 0.7404
+  },
+  {
+    "dataset": "PAWS (validation)",
+    "n": 8000,
+    "pred_positive_rate": 0.9944,
+    "accuracy": 0.4427,
+    "f1": 0.6121
+  }
+]

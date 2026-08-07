@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+
+# dataset cache (auto-downloaded by src/load_data.py)
+data/
+
+# model checkpoints (large) — top-level metrics/reports in results/ ARE tracked
+results/*/
+
+# Kaggle tunnel artifacts
+vscode_cli.tar.gz
+tunnel.log
+nohup.out
+code

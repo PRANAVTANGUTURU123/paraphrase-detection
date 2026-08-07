@@ -1,0 +1,3 @@
+dataset,n,pred_positive_rate,accuracy,f1
+QQP (validation),40430,0.4889,0.7775,0.7404
+PAWS (validation),8000,0.9944,0.4427,0.6121
