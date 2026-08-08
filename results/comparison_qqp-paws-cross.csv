@@ -1,3 +1,3 @@
 model,dataset,n,pred_positive_rate,accuracy,f1
-Cross-encoder QQP+PAWS,QQP (validation),40430,0.5515,0.7285,0.7048
-Cross-encoder QQP+PAWS,PAWS (validation),8000,0.9919,0.4442,0.6125
+Cross-encoder QQP+PAWS,QQP (validation),40430,0.4109,0.8747,0.8392
+Cross-encoder QQP+PAWS,PAWS (validation),8000,0.6089,0.7608,0.7724
