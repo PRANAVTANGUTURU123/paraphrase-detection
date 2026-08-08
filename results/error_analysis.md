@@ -198,3 +198,66 @@ cases are exactly what the cross-encoder's joint encoding addresses, and
 its full-data run (still pending) is the matching test: if it separates
 #6–8/#10 where the full-data bi-encoder could not, the architecture
 hypothesis is confirmed on the strongest possible evidence.
+
+## Full-data cross-encoder retest verdict
+
+The cross-encoder was also retrained on Kaggle GPU with the full datasets.
+At the aggregate level it now **leads the full-data bi-encoder on both
+datasets** — QQP 87.5% vs 85.5%, PAWS 76.1% vs 70.2%
+(`comparison_qqp-paws-cross.md`) — so joint encoding does pay off overall.
+Re-scoring the same 15 pairs (scores are logits; raw data:
+`paws_errors_retest.json`):
+
+| # | Type | True | Small-sample bi sim | Full-data cross score | Pred | Verdict |
+|---|------|------|--------------------|-----------------------|------|---------|
+| 1 | FN | 1 | 0.051 | −1.889 | 0 | still wrong |
+| 2 | FN | 1 | 0.097 | −0.503 | 0 | still wrong |
+| 3 | FN | 1 | 0.110 | −0.414 | 0 | still wrong |
+| 4 | FN | 1 | 0.113 | 1.196 | 1 | FIXED |
+| 5 | FN | 1 | 0.121 | −0.981 | 0 | still wrong |
+| 6 | FP | 0 | 1.000 | 2.293 | 1 | still wrong |
+| 7 | FP | 0 | 1.000 | 1.571 | 1 | still wrong |
+| 8 | FP | 0 | 1.000 | 0.207 | 1 | still wrong |
+| 9 | FP | 0 | 1.000 | −2.983 | 0 | FIXED |
+| 10 | FP | 0 | 1.000 | 2.885 | 1 | still wrong |
+| 11 | FP | 0 | 0.661 | −2.223 | 0 | FIXED |
+| 12 | FP | 0 | 0.662 | −1.562 | 0 | FIXED |
+| 13 | FP | 0 | 0.662 | −2.813 | 0 | FIXED |
+| 14 | FP | 0 | 0.663 | −3.197 | 0 | FIXED |
+| 15 | FP | 0 | 0.663 | 1.349 | 1 | still wrong |
+
+Findings:
+
+1. **4 of the 5 true sim=1.000 cases remain wrong (#6–8, #10), matching
+   the small-sample cross-encoder result almost exactly — full-scale
+   training did not fix this failure mode.** The only fix, #9, is again
+   the ambiguous symmetric-predicate pair, the same one the full-data
+   bi-encoder "fixed". Unlike the bi-encoder, though, the cross-encoder
+   assigns each case a distinct, unsaturated score (0.21 to 2.89, with #8
+   pushed nearly to the boundary): it *can* mechanically distinguish these
+   pairs but is confidently, consistently wrong about them.
+2. **The moderate tier is mostly fixed** (4 of 5; #11–14 now strongly
+   negative). The exception, #15 (the birth-name swap), remains wrong.
+3. **The overcorrection pattern migrated into the cross-encoder.** The
+   small-sample cross-encoder got all 5 false negatives right; the
+   full-data version now rejects 4 of them (#1–3, #5, scores −0.4 to
+   −1.9). Full-strength PAWS training pressure taught *this* architecture,
+   too, to penalize meaning-preserving reorderings — evidence that this
+   failure tracks the training signal rather than the pooling
+   architecture.
+
+**Revised verdict — the original architecture hypothesis is complicated,
+not confirmed.** The two failure modes now have provably different
+characters. The bi-encoder's failure on #6–8/#10 is mathematically
+unfixable: identical vectors cannot be separated by any training. The
+cross-encoder's failure on the *same* cases is not mathematically forced —
+its scores are distinct and it leads on every aggregate metric — yet it
+was not corrected empirically by 25× more training data and a full epoch.
+That pattern (capability present, correction absent), together with
+finding 3, points at the training side as the live suspect: the BCE
+signal on PAWS' label distribution, training duration, or the ms-marco
+passage-ranking pretraining mismatch — rather than pooling architecture
+alone. The project surfaces this as a genuinely open question rather than
+resolving it; natural next probes are an NLI-pretrained cross-encoder
+base, more epochs, and inspecting whether the swap cases' scores move
+across checkpoints during training.
