@@ -6,9 +6,9 @@
     "predicted": 0,
     "sentence1": "Thoranam is a 1987 Indian Malayalam film , directed by Joseph Madappally and produced by V Rajan .",
     "sentence2": "In 1987 , a malayalam Indian film , directed by Joseph Madappally and produced by V Rajan .",
-    "retest_score": 0.399,
-    "retest_pred": 1,
-    "retest_correct": true
+    "retest_score": -1.8895,
+    "retest_pred": 0,
+    "retest_correct": false
   },
   {
     "error_type": "FN",
@@ -17,9 +17,9 @@
     "predicted": 0,
     "sentence1": "Hardwick appeared in `` Coronation Street '' in 1997 as Naomi Russell and in 1998 as Sheila Dixon .",
     "sentence2": "In 1997 , she appeared as Naomi Russell in `` Coronation Street '' and in 1998 as Sheila Dixon .",
-    "retest_score": -0.1842,
-    "retest_pred": 1,
-    "retest_correct": true
+    "retest_score": -0.5026,
+    "retest_pred": 0,
+    "retest_correct": false
   },
   {
     "error_type": "FN",
@@ -28,9 +28,9 @@
     "predicted": 0,
     "sentence1": "In 1997 , she appeared as Sheila Dixon in `` Coronation Street '' and Naomi Russell in 1998 .",
     "sentence2": "Hardwick appeared in `` Coronation Street '' in 1997 as Sheila Dixon and in 1998 as Naomi Russell .",
-    "retest_score": 1.2972,
-    "retest_pred": 1,
-    "retest_correct": true
+    "retest_score": -0.4137,
+    "retest_pred": 0,
+    "retest_correct": false
   },
   {
     "error_type": "FN",
@@ -39,7 +39,7 @@
     "predicted": 0,
     "sentence1": "Kuykendall served alongside Robert White and Joshua Soule Zimmerman as a Chancery Commissioner for Hampshire County .",
     "sentence2": "Alongside Robert White and Joshua Soule Zimmerman , he served as Chancery Commissioner for Hampshire County .",
-    "retest_score": 1.9848,
+    "retest_score": 1.1957,
     "retest_pred": 1,
     "retest_correct": true
   },
@@ -50,9 +50,9 @@
     "predicted": 0,
     "sentence1": "North Abaco is one of the districts of the Bahamas , on the Abaco Islands . It has a population of 9,578 . ( 2010 census )",
     "sentence2": "It is one of the districts of the Bahamas , on the Abaco islands and has a population of 9,578 ( census of 2010 ) .",
-    "retest_score": -0.274,
-    "retest_pred": 1,
-    "retest_correct": true
+    "retest_score": -0.9815,
+    "retest_pred": 0,
+    "retest_correct": false
   },
   {
     "error_type": "FP",
@@ -61,7 +61,7 @@
     "predicted": 1,
     "sentence1": "A A Khap is a clan or group of related clans , mainly under the jats of the western Uttar Pradesh and eastern Haryana .",
     "sentence2": "A A Khap is a clan or group of related clans , mainly under the jats of the eastern Uttar Pradesh and Western Haryana .",
-    "retest_score": 1.913,
+    "retest_score": 2.2926,
     "retest_pred": 1,
     "retest_correct": false
   },
@@ -72,7 +72,7 @@
     "predicted": 1,
     "sentence1": "Road R205 is a regional road in Ireland from road R199 in the county of Leitrim to the Northern Ireland border in the county of Fermanagh , mostly in county Cavan .",
     "sentence2": "Road R205 is a regional road in Ireland from road R199 in the county of Cavan to the Northern Ireland border in the county of Leitrim , mostly in county Fermanagh .",
-    "retest_score": 1.7354,
+    "retest_score": 1.5713,
     "retest_pred": 1,
     "retest_correct": false
   },
@@ -83,7 +83,7 @@
     "predicted": 1,
     "sentence1": "Everton Ferreira Guimarães or simply Kaká ( born May 20 , 1991 in São Paulo ) is a Brazilian footballer who plays for the Portuguese association C.D .",
     "sentence2": "Everton Ferreira Guimarães or simply Kaká ( born May 20 , 1991 in São Paulo ) is a Portuguese footballer who plays for the Brazilian Association C.D .",
-    "retest_score": 2.5684,
+    "retest_score": 0.2066,
     "retest_pred": 1,
     "retest_correct": false
   },
@@ -94,9 +94,9 @@
     "predicted": 1,
     "sentence1": "The Porte de Vincennes is located where the north-eastern corner of the 12th arrondissement meets the south-eastern corner of the 20th arrondissement of Paris .",
     "sentence2": "The Porte de Vincennes is located where the south-eastern corner of the 20th arrondissement meets the north-eastern corner of the 12th arrondissement of Paris .",
-    "retest_score": 2.4109,
-    "retest_pred": 1,
-    "retest_correct": false
+    "retest_score": -2.983,
+    "retest_pred": 0,
+    "retest_correct": true
   },
   {
     "error_type": "FP",
@@ -105,7 +105,7 @@
     "predicted": 1,
     "sentence1": "Mount DeVoe is a mountain on Vancouver Island , British Columbia , Canada , located southeast from Rambler Peak and south of Gold River .",
     "sentence2": "Mount DeVoe is a mountain on Vancouver Island , British Columbia , Canada , located southeast of Gold River and south of Rambler Peak .",
-    "retest_score": 2.0289,
+    "retest_score": 2.8854,
     "retest_pred": 1,
     "retest_correct": false
   },
@@ -116,9 +116,9 @@
     "predicted": 1,
     "sentence1": "He eventually published , in the `` Western Republican `` , '' one of the first botanical collections made in Ohio by a professional botanist .",
     "sentence2": "He finally made one of the first botanical collections in the `` Western Republican '' , which were published in Ohio by a professional botanist .",
-    "retest_score": 1.347,
-    "retest_pred": 1,
-    "retest_correct": false
+    "retest_score": -2.2235,
+    "retest_pred": 0,
+    "retest_correct": true
   },
   {
     "error_type": "FP",
@@ -127,9 +127,9 @@
     "predicted": 1,
     "sentence1": "Sukumar 's friend Stephen ( Murugan ) helps them in the hour of crisis , and lovers unite in marriage .",
     "sentence2": "Murugan 's friend Stephen ( Sukumar ) helps them in their hour of crisis and the lovers unite in marriage .",
-    "retest_score": 2.5564,
-    "retest_pred": 1,
-    "retest_correct": false
+    "retest_score": -1.5617,
+    "retest_pred": 0,
+    "retest_correct": true
   },
   {
     "error_type": "FP",
@@ -138,9 +138,9 @@
     "predicted": 1,
     "sentence1": "The race rubber dish was used by the National Guard of the United States as a base during the historic Wooster Avenue Riots of 1968 .",
     "sentence2": "The historic Rubber Bowl was used by the National Guard of the United States as the base during the racist Wooster Avenue Riots of 1968 .",
-    "retest_score": 1.0226,
-    "retest_pred": 1,
-    "retest_correct": false
+    "retest_score": -2.8134,
+    "retest_pred": 0,
+    "retest_correct": true
   },
   {
     "error_type": "FP",
@@ -149,9 +149,9 @@
     "predicted": 1,
     "sentence1": "3 October : Phil Tufnell defeated James Hewitt ( winning Dart Double 1 )",
     "sentence2": "3 October : James Hewitt beat Phil Tufnell ( Dart Double 1 )",
-    "retest_score": 2.2604,
-    "retest_pred": 1,
-    "retest_correct": false
+    "retest_score": -3.1965,
+    "retest_pred": 0,
+    "retest_correct": true
   },
   {
     "error_type": "FP",
@@ -160,7 +160,7 @@
     "predicted": 1,
     "sentence1": "Norman Melancton Geddes , born Norman Bel Geddes ( 27 April 1893 - 8 May 1958 ) , was an American theatre and industrial designer .",
     "sentence2": "Norman Bel Geddes , born Norman Melancton Geddes ( April 27 , 1893 - May 8 , 1958 ) , was an American theatrical and industrial designer .",
-    "retest_score": 3.1014,
+    "retest_score": 1.3489,
     "retest_pred": 1,
     "retest_correct": false
   }
