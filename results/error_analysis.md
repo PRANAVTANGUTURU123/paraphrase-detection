@@ -143,3 +143,58 @@ workloads its cost scales with candidates × queries, vs. the bi-encoder's
 one-time encoding per sentence plus cheap cosine comparisons. Training was
 also ~2× slower per example than the bi-encoder despite equal backbone
 size.
+
+## Full-data bi-encoder retest verdict
+
+The combined bi-encoder was retrained on Kaggle GPU with the **full
+datasets** (including all 49,401 PAWS train pairs; decision threshold 0.60
+from that run; aggregate results in `comparison.md` — PAWS accuracy rose
+from 53.5% to 70.2%). Re-scoring the same 15 captured pairs:
+
+| # | Type | True | Small-sample sim | Full-data sim | Pred | Verdict |
+|---|------|------|------------------|---------------|------|---------|
+| 1 | FN | 1 | 0.051 | 0.510 | 0 | still wrong |
+| 2 | FN | 1 | 0.097 | 0.125 | 0 | still wrong |
+| 3 | FN | 1 | 0.110 | 0.134 | 0 | still wrong |
+| 4 | FN | 1 | 0.113 | 0.067 | 0 | still wrong |
+| 5 | FN | 1 | 0.121 | 0.395 | 0 | still wrong |
+| 6 | FP | 0 | 1.000 | 0.981 | 1 | still wrong |
+| 7 | FP | 0 | 1.000 | 0.996 | 1 | still wrong |
+| 8 | FP | 0 | 1.000 | 0.999 | 1 | still wrong |
+| 9 | FP | 0 | 1.000 | 0.528 | 0 | FIXED |
+| 10 | FP | 0 | 1.000 | 0.999 | 1 | still wrong |
+| 11 | FP | 0 | 0.661 | 0.479 | 0 | FIXED |
+| 12 | FP | 0 | 0.662 | 0.506 | 0 | FIXED |
+| 13 | FP | 0 | 0.662 | 0.414 | 0 | FIXED |
+| 14 | FP | 0 | 0.663 | 0.013 | 0 | FIXED |
+| 15 | FP | 0 | 0.663 | 0.256 | 0 | FIXED |
+
+Three findings, refining the small-sample analysis:
+
+1. **The extreme identical-embedding cases are confirmed as an
+   architectural ceiling, not a data-volume problem.** 4 of the 5 true
+   sim=1.000 swap cases (#6–8, #10) are still wrong, with similarities
+   ≥ 0.98 even after a ~25× increase in PAWS training data — full-scale
+   training separated the embeddings by epsilon, not by anything usable.
+   The one exception, #9 (0.528), is precisely the pair category C flagged
+   as genuinely ambiguous (symmetric predicate "meets", gold label
+   arguable), so it is weak evidence of real swap sensitivity.
+2. **More data fixed every moderate-overlap swap case.** All five ~0.66
+   false positives (#11–15) now score 0.01–0.51, below threshold. Where
+   the embeddings had *any* separation for training to widen, data volume
+   was the right lever — consistent with the aggregate PAWS gain.
+3. **The false negatives (overcorrection) remain unfixed, but the pattern
+   is insufficient correction, not deepened overcorrection.** All five are
+   still below threshold, but two moved substantially toward correct
+   (0.051→0.510, 0.121→0.395), two are roughly flat, and one slipped
+   slightly (0.113→0.067). Full training did not worsen the indiscriminate
+   reorder penalty; it partially relaxed it without crossing the line.
+
+**Refined verdict**: more data helps broadly — it lifted PAWS accuracy 17
+points and cleared the entire moderate tier of errors — but the most
+extreme identical-embedding failures did not move meaningfully and appear
+to be a genuine ceiling of the bi-encoder architecture. Those specific
+cases are exactly what the cross-encoder's joint encoding addresses, and
+its full-data run (still pending) is the matching test: if it separates
+#6–8/#10 where the full-data bi-encoder could not, the architecture
+hypothesis is confirmed on the strongest possible evidence.
